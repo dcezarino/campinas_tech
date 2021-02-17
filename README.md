@@ -1,2 +1,2 @@
-# campinas_tech
-Aulas e Projetos Campinas Tech
+# Campinas Tech
+Aulas e projetos do treinamento Campinas Tech
