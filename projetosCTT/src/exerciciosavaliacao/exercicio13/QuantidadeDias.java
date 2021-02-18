@@ -17,25 +17,36 @@ public class QuantidadeDias {
 	public static void main(String[] args) throws Exception {
 
 		int dias = 31;
-		int retornaMes;
+		int retornaMes = 0;
+		int retornaAno = 0;
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o mês de [1-12] e o ano [XX/XXXX]: ");
-		String mes = sc.next();
+		String string = sc.nextLine();
 
-		// Verificar como pegar somente o dia do mês.
-		retornaMes = Integer.parseInt(mes.substring(0, 2));
+		try {
+			// Retorna o mês e o ano de acordo com a posição inicial e final
+			retornaMes = Integer.parseInt(string.substring(0, 2));
+			retornaAno = Integer.parseInt(string.substring(3, 7));
+		} catch (Exception e) {
+			System.out.println("Mês e ano digitado inválido ou fora do padrão [XX/XXXX]");
+			System.exit(1);
+		}
 
 		if (retornaMes < 1 || retornaMes > 12) {
 			System.out.println("Mês digitado inválido");
-			System.exit(1);
+			System.exit(0);
 		}
 
 		switch (retornaMes) {
 		case 2:
-			dias -= 2;
-			break;
-
+			if ((retornaAno % 400 == 0) || ((retornaAno % 4 == 0) && (retornaAno % 100 != 0))) {
+				dias -= 2;
+				break;
+			} else {
+				dias -= 3;
+				break;
+			}
 		case 4:
 		case 6:
 		case 9:
