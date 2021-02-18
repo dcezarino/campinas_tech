@@ -29,7 +29,7 @@ public class QuantidadeDias {
 			retornaMes = Integer.parseInt(string.substring(0, 2));
 			retornaAno = Integer.parseInt(string.substring(3, 7));
 		} catch (Exception e) {
-			System.out.println("Mês e ano digitado inválido ou fora do padrão [XX/XXXX]");
+			System.out.println("Mês e ano digitado inválido ou fora do padrão [XX/XXXX]" + " - " + e.getMessage());
 			System.exit(1);
 		}
 
