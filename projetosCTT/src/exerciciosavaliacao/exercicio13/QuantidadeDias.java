@@ -25,7 +25,7 @@ public class QuantidadeDias {
 		String string = sc.nextLine();
 
 		try {
-			// Separa o ano e o mês de um String usando o método substring
+			// Separa o ano e o mês de uma String usando o método substring
 			retornaMes = Integer.parseInt(string.substring(0, 2));
 			retornaAno = Integer.parseInt(string.substring(3, 7));
 		} catch (Exception e) {
