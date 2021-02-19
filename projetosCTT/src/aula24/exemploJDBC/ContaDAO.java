@@ -1,4 +1,4 @@
-package aula24;
+package aula24.exemploJDBC;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
