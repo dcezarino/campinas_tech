@@ -29,7 +29,7 @@ public class TelefoneController {
 		telefoneDtoOutput.setNumero(telefoneDtoInput.getNumero());
 		telefoneDtoOutput.setDdd(telefoneDtoInput.getDdd());
 		telefoneDtoOutput.setId(1L);
-		return telefoneDtoOutput;			
+		return telefoneDtoOutput;
 	}
 
 }

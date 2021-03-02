@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class TelefoneDtoOutput extends TelefoneDtoInput {
-	
+
 	private Long id;
 
 }

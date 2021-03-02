@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class EnderecoDtoInput {
-	
+
 	private String rua;
 	private String numero;
 	private String complemento;

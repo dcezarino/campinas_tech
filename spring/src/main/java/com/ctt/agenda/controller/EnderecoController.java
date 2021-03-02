@@ -11,12 +11,12 @@ import com.ctt.agenda.dto.output.EnderecoDtoOutput;
 @RestController
 @RequestMapping("/endereco")
 public class EnderecoController {
-	
+
 	@RequestMapping
 	private String get() {
 		return "Teste get Endereço";
 	}
-	
+
 	@PostMapping(consumes = "application/json", produces = "application/json")
 	public EnderecoDtoInput post(@RequestBody EnderecoDtoInput enderecoDtoInput) {
 		System.out.println(enderecoDtoInput);
@@ -29,6 +29,6 @@ public class EnderecoController {
 		enderecoDtoOutput.setCep(enderecoDtoInput.getCep());
 		enderecoDtoOutput.setId(1L);
 		return enderecoDtoOutput;
-	}	
-	
+	}
+
 }
