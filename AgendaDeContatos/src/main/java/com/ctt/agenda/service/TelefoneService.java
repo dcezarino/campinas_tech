@@ -34,7 +34,6 @@ public class TelefoneService {
 		this.telefoneConverter.dtoToModel(telefoneDtoInput, telefone);
 		this.telefoneRepository.save(telefone);
 		return this.telefoneConverter.modelToDto(telefone);
-
 	}
 
 	public List<TelefoneDtoOutput> getAll() {

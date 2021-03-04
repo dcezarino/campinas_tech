@@ -8,22 +8,19 @@ import org.springframework.stereotype.Service;
 
 import com.ctt.agenda.converter.EnderecoConverter;
 import com.ctt.agenda.dto.input.EnderecoDtoInput;
-import com.ctt.agenda.dto.input.TelefoneDtoInput;
 import com.ctt.agenda.dto.output.EnderecoDtoOutput;
-import com.ctt.agenda.dto.output.TelefoneDtoOutput;
 import com.ctt.agenda.entity.Endereco;
-import com.ctt.agenda.entity.Telefone;
 import com.ctt.agenda.repository.EnderecoRepository;
 
 @Service
 public class EnderecoService {
-	
+
 	@Autowired
 	private EnderecoRepository enderecoRepository;
-	
+
 	@Autowired
 	private EnderecoConverter enderecoConverter;
-	
+
 	public EnderecoDtoOutput create(EnderecoDtoInput enderecoDtoInput) {
 		Endereco endereco = enderecoConverter.dtoToModel(enderecoDtoInput);
 		this.enderecoRepository.save(endereco);
@@ -33,11 +30,9 @@ public class EnderecoService {
 	public EnderecoDtoOutput update(EnderecoDtoInput enderecoDtoInput, Long id) {
 		Optional<Endereco> enderecoOptional = this.enderecoRepository.findById(id);
 		Endereco endereco = enderecoOptional.get();
-
 		this.enderecoConverter.dtoToModel(enderecoDtoInput, endereco);
 		this.enderecoRepository.save(endereco);
 		return this.enderecoConverter.modelToDto(endereco);
-
 	}
 
 	public List<EnderecoDtoOutput> getAll() {
@@ -53,11 +48,5 @@ public class EnderecoService {
 	public void delete(Long id) {
 		this.enderecoRepository.deleteById(id);
 	}
-
-	
-	
-	
-	
-	
 
 }

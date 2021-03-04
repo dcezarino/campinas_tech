@@ -11,7 +11,7 @@ import com.ctt.agenda.entity.Endereco;
 
 @Service
 public class EnderecoConverter {
-	
+
 	public Endereco dtoToModel(EnderecoDtoInput enderecoDtoInput) {
 		Endereco endereco = new Endereco();
 		return this.dtoToModel(enderecoDtoInput, endereco);
@@ -23,7 +23,7 @@ public class EnderecoConverter {
 		endereco.setNumero(enderecoDtoInput.getNumero());
 		endereco.setCidade(enderecoDtoInput.getCidade());
 		endereco.setEstado(enderecoDtoInput.getEstado());
-		endereco.setComplemento(enderecoDtoInput.getComplemento());				
+		endereco.setComplemento(enderecoDtoInput.getComplemento());
 		return endereco;
 	}
 
@@ -35,7 +35,7 @@ public class EnderecoConverter {
 		enderecoDtoOutput.setCidade(endereco.getCidade());
 		enderecoDtoOutput.setEstado(endereco.getEstado());
 		enderecoDtoOutput.setComplemento(endereco.getComplemento());
-		enderecoDtoOutput.setId(endereco.getId());		
+		enderecoDtoOutput.setId(endereco.getId());
 		return enderecoDtoOutput;
 	}
 
