@@ -23,11 +23,13 @@ public class Contato {
 
 	@Column(nullable = false)
 	private String nome;
-
+	
+	// Adiciona chave estrangeira na tabela contato
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
 	private Endereco endereco;
-
+	
+	// Adiciona chave estrangeira na tabela contato	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "telefone_id", referencedColumnName = "id")
 	private Telefone telefone;

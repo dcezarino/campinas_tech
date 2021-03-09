@@ -38,10 +38,13 @@ public class ContatoConverter {
 
 	public Contato dtoToModel(ContatoDtoInput contatoDtoInput, Contato contato) {
 		contato.setNome(contatoDtoInput.getNome());
+		
 		Telefone telefone = telefoneRepository.findById(contatoDtoInput.getIdTelefone()).get();
 		Endereco endereco = enderecoRepository.findById(contatoDtoInput.getIdEndereco()).get();
+		
 		contato.setTelefone(telefone);
 		contato.setEndereco(endereco);
+		
 		return contato;
 	}
 

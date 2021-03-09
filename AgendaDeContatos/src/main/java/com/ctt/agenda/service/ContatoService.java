@@ -31,12 +31,10 @@ public class ContatoService {
 		Contato contato = this.contatoRepository.findById(id).get();
 		contato.setNome(contatoDtoInput.getNome());
 		this.contatoRepository.save(contato);
-		return this.contatoConverter.modelToDto(contato);
-		
+		return this.contatoConverter.modelToDto(contato);		
 	}
 
 	public List<ContatoDtoOutput> getAll() {
-
 		return this.contatoConverter.modelToDto(this.contatoRepository.findAll());
 	}
 
