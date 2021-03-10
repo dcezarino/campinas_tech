@@ -37,6 +37,7 @@ public class EnderecoController {
 		return this.enderecoService.get(id);
 	}
 
+	// Entrada do meu DTO sendo validado @Valid
 	@PostMapping(consumes = "application/json", produces = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	public EnderecoDtoOutput post(@Valid @RequestBody EnderecoDtoInput enderecoDtoInput) {

@@ -62,10 +62,6 @@ public class TelefoneController {
 	}	
 
 
-		
-	
-	
-
 	/*@GetMapping
 	private String get() {
 		return "Teste Get Telefone";
