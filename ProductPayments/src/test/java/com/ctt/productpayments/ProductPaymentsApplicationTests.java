@@ -1,10 +1,10 @@
-package com.ctt.vacina;
+package com.ctt.productpayments;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class VacinaApplicationTests {
+class ProductPaymentsApplicationTests {
 
 	@Test
 	void contextLoads() {
