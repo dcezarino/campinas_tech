@@ -1,4 +1,4 @@
-package com.ctt.vacina.dto.request;
+package com.techtalents.vacina.dto.request;
 
 import java.util.Date;
 
@@ -8,22 +8,24 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class UsuarioRequest {
-	
+
 	@Size(min = 11, max = 11)
 	private String cpf;
-	
+
 	@PastOrPresent
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date dataNascimento;
-	
+
 	@Email
-	private String nome;
-	
+	private String email;
+
 	@Size(min = 2, max = 255)
-	private String email;	
+	private String nome;
 
 }

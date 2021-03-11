@@ -1,4 +1,4 @@
-package com.ctt.vacina;
+package com.techtalents.vacina;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

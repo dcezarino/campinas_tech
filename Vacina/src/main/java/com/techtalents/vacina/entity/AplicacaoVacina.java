@@ -1,4 +1,4 @@
-package com.ctt.vacina.entity;
+package com.techtalents.vacina.entity;
 
 import java.util.Date;
 
@@ -13,8 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.ctt.vacina.dto.request.AplicacaoVacinaRequest;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.techtalents.vacina.dto.request.AplicacaoVacinacaoRequest;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,15 +23,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class AplicacaoVacina {
-	
-	public AplicacaoVacina(AplicacaoVacinaRequest aplicacaoVacinaRequest, Usuario usuario) {
-		this.fillFromDTO(aplicacaoVacinaRequest, usuario);
-		this.setUsuario(usuario);	
+
+	public AplicacaoVacina(AplicacaoVacinacaoRequest aplicacaoVacinacaoRequest, Usuario usuario) {
+		this.fillFromDto(aplicacaoVacinacaoRequest);
+		this.setUsuario(usuario);
 	}
-	
-	public void fillFromDTO(AplicacaoVacinaRequest aplicacaoVacinaRequest, Usuario usuario) {
-		this.setDataDaVacina(aplicacaoVacinaRequest.getDataDaVacina());
-		this.setNomeDaVacina(aplicacaoVacinaRequest.getNomeDaVacina());		
+
+	public void fillFromDto(AplicacaoVacinacaoRequest aplicacaoVacinacaoRequest) {
+		this.setDataDaVacina(aplicacaoVacinacaoRequest.getDataDaVacina());
+		this.setNomeDaVacina(aplicacaoVacinacaoRequest.getNomeVacina());
+
 	}
 
 	@Id
@@ -45,7 +46,6 @@ public class AplicacaoVacina {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date dataDaVacina;
 
-	// fetch: só irá carregar a Aplicação da Vacina quando necessário
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;

@@ -1,15 +1,19 @@
-package com.ctt.vacina.service;
+package com.techtalents.vacina.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.ctt.vacina.dto.request.UsuarioRequest;
-import com.ctt.vacina.dto.response.UsuarioResponse;
-import com.ctt.vacina.entity.Usuario;
-import com.ctt.vacina.exception.CPFJaExistenteException;
-import com.ctt.vacina.exception.EmailJaExistenteException;
-import com.ctt.vacina.repository.UsuarioRepository;
+import com.techtalents.vacina.dto.request.UsuarioRequest;
+import com.techtalents.vacina.dto.response.UsuarioResponse;
+import com.techtalents.vacina.entity.Usuario;
+import com.techtalents.vacina.exception.CPFInvalidoException;
+import com.techtalents.vacina.exception.CPFJaExistenteException;
+import com.techtalents.vacina.exception.EmailJaExistenteException;
+import com.techtalents.vacina.repository.UsuarioRepository;
+
+import br.com.caelum.stella.validation.CPFValidator;
+import br.com.caelum.stella.validation.InvalidStateException;
 
 @Service
 public class UsuarioService {
@@ -17,11 +21,8 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-//	public Usuario create(Usuario usuario) {		
-//		return this.usuarioRepository.save(usuario);		
-//	}
-
 	public UsuarioResponse create(UsuarioRequest usuarioRequest) {
+		this.validarCpf(usuarioRequest.getCpf());
 		Usuario usuario = new Usuario(usuarioRequest);
 		try {
 			Usuario usuarioCriado = this.usuarioRepository.save(usuario);
@@ -36,6 +37,16 @@ public class UsuarioService {
 				throw e;
 			}
 
+		}
+
+	}
+
+	public void validarCpf(String cpf) {
+		CPFValidator cpfValidator = new CPFValidator();
+		try {
+			cpfValidator.assertValid(cpf);
+		} catch (InvalidStateException e) {
+			throw new CPFInvalidoException();
 		}
 	}
 
