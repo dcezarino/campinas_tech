@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Size;
 
 import com.ctt.productpayments.request.CategoryRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -42,8 +41,7 @@ public class Category {
 	@Column(nullable = false)
 	private String name;
 	
-	@Column(nullable = false)
-	@Size(max = 5)
+	@Column(nullable = false)	
 	private String code;
 	
 	@JsonIgnore
