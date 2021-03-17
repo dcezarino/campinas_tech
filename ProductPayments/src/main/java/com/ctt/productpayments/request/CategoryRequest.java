@@ -16,7 +16,7 @@ public class CategoryRequest {
 	private String name;
 	
 	@NotBlank
-	@Size(max = 5)
+	@Size(max = 3, message = "code cannot be greater than three")
 	private String code;
 		
     private List<Product> products;
