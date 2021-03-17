@@ -17,7 +17,7 @@ public class OrderStatusRequest {
 	private String name;
 
 	@NotBlank
-	@Size(max = 5)
+	@Size(max = 5, message= "code cannot be greater than three five")
 	private String code;
 
 	@NotNull
