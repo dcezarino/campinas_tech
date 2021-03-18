@@ -26,7 +26,6 @@ public class OrderResponse {
 		this.setDate(order.getDate());
 	}
 
-	@JsonIgnore
 	private Client client;
 
 	private List<Product> productsIds;
