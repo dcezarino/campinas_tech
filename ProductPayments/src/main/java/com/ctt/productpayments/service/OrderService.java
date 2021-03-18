@@ -3,6 +3,7 @@ package com.ctt.productpayments.service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -101,7 +102,7 @@ public class OrderService {
 		Payment paymentCreated = paymentRepository.save(payment);
 
 		OrderStatus orderStatus = orderStatusRepository.findByPaymentStatus(paymentCreated.getPaymentStatus())
-				.orElseThrow();
+				.orElseThrow(() -> new NotFound());
 
 		List<Product> products = productRepository.findProductByIdIn(orderRequest.getProductsIds());
 
@@ -110,13 +111,13 @@ public class OrderService {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-YYYY HH:mm");
 		LocalDateTime dateTime = order.getDate();
 		String formattedDateTime = dateTime.format(formatter);
-		String finalDate = formattedDateTime.replaceAll("[^0-9]+", "");
+		String finalDate = formattedDateTime.replaceAll("[^0-9]+", "");		
 
 		Order orderCreated = this.orderRepository.save(order);
 
 		Long id = orderCreated.getId();
 		String idString = Long.toString(id);
-
+				
 		orderCreated.setCode(finalDate + idString);
 
 		orderRepository.saveAndFlush(orderCreated);
@@ -124,10 +125,12 @@ public class OrderService {
 		return new OrderResponse(orderCreated);
 
 	}
-	
-	public List<OrderResponse> getInformationOrders(Long idClient){
+
+	public List<OrderResponse> getInformationOrders(Long idClient) {
 		Client client = this.clientRepository.findById(idClient).orElseThrow(() -> new NotFound());
-		List<OrderResponse> orders = client.getOrders().stream().map(OrderResponse::new).collect(Collectors.toList());
+		List<OrderResponse> orders = client.getOrders().stream().sorted(Comparator.comparing(Order::getDate))
+				.map(OrderResponse::new).collect(Collectors.toList());
+
 		return orders;
 	}
 
