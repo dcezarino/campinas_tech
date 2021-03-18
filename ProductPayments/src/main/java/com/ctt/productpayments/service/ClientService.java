@@ -1,5 +1,6 @@
 package com.ctt.productpayments.service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,12 +24,10 @@ public class ClientService {
 		Client client = clientOptional.orElseThrow();
 		return client;
 	}
-	
+
 	public List<ClientResponse> getAll() {
-		return this.clientRepository.findAll()
-				.stream()
-				.map(ClientResponse::new)
-				.collect(Collectors.toList());	
+		return this.clientRepository.findAll().stream().sorted(Comparator.comparing(Client::getEmail))
+				.map(ClientResponse::new).collect(Collectors.toList());
 	}
 
 	public ClientResponse create(ClientRequest clientRequest) {
@@ -36,7 +35,6 @@ public class ClientService {
 		Client clientCreated = this.clientRepository.save(client);
 		return new ClientResponse(clientCreated);
 	}
-
 
 	public ClientResponse update(ClientRequest clientRequest, Long id) {
 
