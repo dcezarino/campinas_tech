@@ -17,10 +17,10 @@ A API desenvolvida disponibiliza de alguns métodos que podem ser consumidos par
 
 ## Funcionalidades
 - Cadastrar categorias dos produtos
-- Cadastrar produtos e consultar os mesmos ordenados por ordem alfabética, buscar o produto através do Id, atualizar algum dado do produto, buscar pela categoria, ordernar pelo preço em ordem decrescente e crescente, e deletar um produto.
+- Cadastrar produtos, consultar os mesmos em ordem alfabética, buscar o produto através do Id, atualizar algum dado do produto, buscar pela categoria, listar os produtos em ordem decrescente e crescente do preço, e deletar um produto
 - Cadastrar clientes, atualizar algum dado de um cliente, consultar clientes
 - Cadastrar status dos pedidos
-- Gerar um pedido através de uma compra de produtos, consultar os pedidos através do Id do cliente, buscar as ordens que estão com o status de Aguardando e alterar para Aprovado, Reprovado ou Aguardando. 
+- Gerar um pedido através de uma compra de produtos, consultar os pedidos através do Id do cliente, buscar as ordens que estão com o status de Aguardando e alterar para o status do pagamento para Aprovado, Reprovado ou Aguardando 
 
 ## Diagrama de Entidade e Relacionamento 
 
