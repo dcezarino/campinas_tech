@@ -3,7 +3,7 @@ package com.ctt.productpayments.response;
 import java.util.List;
 
 import com.ctt.productpayments.entity.Category;
-import com.ctt.productpayments.entity.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,9 +16,9 @@ public class CategoryResponse {
 		this.setName(category.getName());
 		this.setCode(category.getCode() + String.format("%02d", category.getId()));			
 
-		for (Product product : category.getProducts()) {
-			products.add(new ProductResponse(product));
-		}	
+//		for (Product product : category.getProducts()) {
+//			products.add(new ProductResponse(product));
+//		}	
 
 	}
 
@@ -26,6 +26,7 @@ public class CategoryResponse {
 
 	private String code;
 	
+	@JsonIgnore
 	private List<ProductResponse> products;
 
 }
