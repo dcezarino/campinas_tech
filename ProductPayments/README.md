@@ -23,6 +23,7 @@ A API desenvolvida disponibiliza de alguns métodos que podem ser consumidos par
 - Gerar um pedido através de uma compra de produtos, consultar os pedidos através do Id do cliente, buscar os pedidos que estão com o status de “Aguardando”, e alterar para o status do pagamento para “Aprovado”, “Reprovado” ou “Aguardando”
 
 ## Diagrama de Entidade e Relacionamento 
+![ERD](https://user-images.githubusercontent.com/22798725/111677152-b484a680-87fd-11eb-8ddb-d3fa0ff666be.png)
 
 ## Versão API
 1.0
