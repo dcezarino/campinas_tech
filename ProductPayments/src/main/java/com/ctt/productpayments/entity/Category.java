@@ -29,8 +29,7 @@ public class Category {
 
 	public void fillCategoryFromDto(CategoryRequest categoryRequest) {
 		this.setName(categoryRequest.getName());
-		this.setCode(categoryRequest.getCode());
-		//this.setProducts(categoryRequest.getProducts());		
+		this.setCode(categoryRequest.getCode());		
 	}
 	
 	
