@@ -37,7 +37,7 @@ public class OrderStatus {
 	@Column(nullable = false)
 	private String name;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 5)
 	private String code;
 
 	@Column(nullable = false)
