@@ -19,6 +19,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.ctt.productpayments.request.OrderRequest;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
@@ -31,12 +32,12 @@ import lombok.NoArgsConstructor;
 @Table(name="Orders")
 public class Order {	
 	
-	public Order(OrderRequest orderRequest, Client client, Payment payment, List<Product> products, OrderStatus orderStatus) {		
+	public Order(OrderRequest orderRequest, Client client, Payment payment, List<Product> products, OrderStatus orderStatus) {
+		this.setDeliveredAddress(orderRequest.getDeliveredAddres());	
 		this.setClient(client);
-		this.setDeliveredAddress(orderRequest.getDeliveredAddres());				
-		this.setProducts(products);
-		this.setPayment(payment);		
-		this.setOrderStatus(orderStatus);
+		this.setPayment(payment);
+		this.setProducts(products);				
+		this.setOrderStatus(orderStatus);		
 		this.setDate(LocalDateTime.now());
 	}	
 
@@ -64,6 +65,7 @@ public class Order {
 	private Payment payment;
 	
 	@Column(name = "local_date_time", columnDefinition = "TIMESTAMP")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
 	private LocalDateTime date;
 	
 	@Column(name = "code")
