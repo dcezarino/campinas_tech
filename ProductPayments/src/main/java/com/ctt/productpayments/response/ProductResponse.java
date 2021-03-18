@@ -15,8 +15,8 @@ public class ProductResponse {
 	public ProductResponse(Product product) {
 		this.setId(product.getId());
 		this.setName(product.getName());
-		this.setPrice(product.getPrice());
 		this.setCategory(product.getCategory());
+		this.setPrice(product.getPrice());
 		this.setDetails(product.getDetails());			
 	}	
 	
