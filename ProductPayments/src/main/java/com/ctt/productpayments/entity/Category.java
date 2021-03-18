@@ -41,7 +41,7 @@ public class Category {
 	@Column(nullable = false)
 	private String name;
 	
-	@Column(nullable = false)	
+	@Column(nullable = false, length = 3)	
 	private String code;
 	
 	@JsonIgnore
