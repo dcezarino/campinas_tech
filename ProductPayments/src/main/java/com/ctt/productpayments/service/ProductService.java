@@ -28,7 +28,7 @@ public class ProductService {
 
 	public List<Product> findByCategory(Long categoryId) {
 		// Busca categoria por ID
-		Category category = categoryRepository.findById(categoryId).orElseThrow();
+		Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new NotFound());
 		// Busca produtos pela categoria encontrada
 		return productRepository.findByCategory(category);
 	}
