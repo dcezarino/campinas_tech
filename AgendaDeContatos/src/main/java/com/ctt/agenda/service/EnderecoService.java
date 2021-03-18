@@ -18,14 +18,11 @@ public class EnderecoService {
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 
-//	@Autowired
-//	private EnderecoConverter enderecoConverter;
-	
+
 	private Endereco findById(Long id) {
 		Endereco endereco = this.enderecoRepository.findById(id).orElseThrow(() -> new NotFound());
-		return endereco;		
+		return endereco;
 	}
-	
 
 	public EnderecoDtoOutput create(EnderecoDtoInput enderecoDtoInput) {
 		Endereco endereco = new Endereco(enderecoDtoInput);
@@ -34,21 +31,18 @@ public class EnderecoService {
 	}
 
 	public EnderecoDtoOutput update(EnderecoDtoInput enderecoDtoInput, Long id) {
-		//Optional<Endereco> enderecoOptional = this.enderecoRepository.findById(id);
-		
-		//Endereco endereco = enderecoOptional.get();
+		// Optional<Endereco> enderecoOptional = this.enderecoRepository.findById(id);
+
+		// Endereco endereco = enderecoOptional.get();
 		Endereco endereco = this.findById(id);
 		endereco.fillEnderecoFromDto(enderecoDtoInput);
-		
+
 		this.enderecoRepository.save(endereco);
 		return new EnderecoDtoOutput(endereco);
 	}
 
 	public List<EnderecoDtoOutput> getAll() {
-		return this.enderecoRepository.findAll()
-				.stream()
-				.map(EnderecoDtoOutput::new)
-				.collect(Collectors.toList());	
+		return this.enderecoRepository.findAll().stream().map(EnderecoDtoOutput::new).collect(Collectors.toList());
 	}
 
 	public EnderecoDtoOutput get(Long id) {
@@ -59,7 +53,8 @@ public class EnderecoService {
 	}
 
 	public void delete(Long id) {
-		//Endereco endereco = this.enderecoRepository.findById(id).orElseThrow(() -> new NotFound());
+		// Endereco endereco = this.enderecoRepository.findById(id).orElseThrow(() ->
+		// new NotFound());
 		Endereco endereco = this.findById(id);
 		this.enderecoRepository.delete(endereco);
 	}
