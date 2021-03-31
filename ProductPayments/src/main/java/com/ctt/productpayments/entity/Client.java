@@ -25,8 +25,7 @@ import lombok.NoArgsConstructor;
 public class Client {
 
 	public Client(ClientRequest clientRequest) {
-		this.fillClientFromDto(clientRequest);
-		this.setOrders(orders);
+		this.fillClientFromDto(clientRequest);		
 	}
 
 	public void fillClientFromDto(ClientRequest clientRequest) {
